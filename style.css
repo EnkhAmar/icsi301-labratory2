@@ -13,6 +13,7 @@
 
     --blue: #0000ff;
     --white: #fff;
+    --yellow: #ff0;
 
     --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
@@ -205,16 +206,15 @@ body {
     display: none;
 }
 
-.month-picker {
-    font-size: 25px;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 10px;
-    cursor: pointer;
+.calendar-days div.ntf-date,
+.calendar-days div.ntf-date:hover {
+    background-color: var(--yellow);
+    color: var(--light-text);
+    border-radius: 50%;
 }
 
-.month-picker:hover {
-    background-color: var(--color-hover);
+.calendar-days div.ntf-date span {
+    display: none;
 }
 
 .year-picker {
