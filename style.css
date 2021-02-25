@@ -51,6 +51,23 @@ body {
     place-items: center;
     font-family: var(--font-family);
     background-color: var(--bg-body);
+    grid-template-areas: 
+        "header header header";
+}
+
+.header {
+    margin-top: 20px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--color-txt);
+    background-color: var(--bg-main);
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    grid-area: header;
 }
 
 .calendar {
@@ -70,10 +87,8 @@ body {
 
 .calendar-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    font-size: 25px;
-    font-weight: 600;
     color: var(--color-txt);
     padding: 10px;
 }
@@ -191,6 +206,8 @@ body {
 }
 
 .month-picker {
+    font-size: 25px;
+    font-weight: 600;
     padding: 5px 10px;
     border-radius: 10px;
     cursor: pointer;
@@ -203,6 +220,8 @@ body {
 .year-picker {
     display: flex;
     align-items: center;
+    font-size: 25px;
+    font-weight: 600;
 }
 
 .year-change {
@@ -228,6 +247,7 @@ body {
 
 .toggle {
     display: flex;
+    align-self: flex-end;
 }
 
 .toggle span {
