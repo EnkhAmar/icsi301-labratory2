@@ -1,6 +1,6 @@
 let calendar = document.querySelector('.calendar')
 
-const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+const month_id = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
 isLeapYear = (year) => {
     return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
@@ -10,10 +10,12 @@ getFebDays = (year) => {
     return isLeapYear(year) ? 29 : 28
 }
 
-generateCalendar = (month, year, calendar_id) => {
+generateCalendar = (month, year) => {
     
-    let calendar_days = document.getElementById(calendar_id)
-    let calendar_header_year = calendar.querySelector('#year')
+    let calendar_days = document.getElementById(month_id[month])
+    let calendar_year = document.querySelector('#year')
+    calendar_days.innerHTML = '';
+    calendar_year.innerHTML = year;
 
     let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     
@@ -41,27 +43,20 @@ let currDate = new Date()
 let curr_month = {value: currDate.getMonth()}
 let curr_year = {value: currDate.getFullYear()}
 
-generateCalendar(0, curr_year.value, 'jan')
-generateCalendar(1, curr_year.value, 'feb')
-generateCalendar(2, curr_year.value, 'mar')
-generateCalendar(3, curr_year.value, 'apr')
-generateCalendar(4, curr_year.value, 'may')
-generateCalendar(5, curr_year.value, 'jun')
-generateCalendar(6, curr_year.value, 'jul')
-generateCalendar(7, curr_year.value, 'aug')
-generateCalendar(8, curr_year.value, 'sep')
-generateCalendar(9, curr_year.value, 'oct')
-generateCalendar(10, curr_year.value, 'nov')
-generateCalendar(11, curr_year.value, 'dec')
+function generateAll () {
+    for(let i = 0; i < 12; i++) {
+        generateCalendar(i, curr_year.value)
+    }
+}
 
 document.querySelector('#prev-year').onclick = () => {
-    --curr_year.value
-    generateCalendar(curr_month.value, curr_year.value)
+    --curr_year.value;
+    generateAll();
 }
 
 document.querySelector('#next-year').onclick = () => {
-    ++curr_year.value
-    generateCalendar(curr_month.value, curr_year.value)
+    ++curr_year.value;
+    generateAll();
 }
 
 let dark_mode_toggle = document.querySelector('.dark-mode-switch')
@@ -70,3 +65,5 @@ dark_mode_toggle.onclick = () => {
     document.querySelector('body').classList.toggle('light')
     document.querySelector('body').classList.toggle('dark')
 }
+
+generateAll();
