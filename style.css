@@ -13,7 +13,7 @@
 
     --blue: #0000ff;
     --white: #fff;
-    --yellow: #ff0;
+    --red: red;
 
     --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
@@ -53,7 +53,8 @@ body {
     font-family: var(--font-family);
     background-color: var(--bg-body);
     grid-template-areas: 
-        "header header header";
+        "header header header"
+        "desc desc desc";
 }
 
 .header {
@@ -208,13 +209,25 @@ body {
 
 .calendar-days div.ntf-date,
 .calendar-days div.ntf-date:hover {
-    background-color: var(--yellow);
+    background-color: var(--red);
     color: var(--light-text);
     border-radius: 50%;
 }
 
 .calendar-days div.ntf-date span {
     display: none;
+}
+
+.month-picker {
+    font-size: 25px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.month-picker:hover {
+    background-color: var(--color-hover);
 }
 
 .year-picker {
@@ -289,4 +302,42 @@ body {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+.description {
+    color: var(--color-txt);
+    background-color: var(--bg-main);
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    grid-area: desc;
+    width: 80%;
+}
+
+.ul-desc {
+    margin-left: 20px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+ul.ul-desc li::before {
+    content: "\25C9";
+    color: red;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 50px;
+    width: 1em;
+    margin-left: -0.5em;
+}
+
+.ul-desc li {
+    display: flex;
+    align-items: center;
+    max-width: 70%;
+    margin-left: inherit;
+}
+
+ul.ul-desc li.curr-date::before {
+    color: var(--blue);
 }
